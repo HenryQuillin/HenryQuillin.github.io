@@ -4,4 +4,3 @@ AOS.init({
   duration: 1000
 });
 
-// Add your javascript here
