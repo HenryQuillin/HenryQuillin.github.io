@@ -12,9 +12,9 @@ context.scale(dpr, dpr);
 context.lineWidth = 2;
   
 var circles = [];
-var minRadius = .00001;
+var minRadius = .0001;
 var maxRadius = 150;
-var totalCircles = 30000;
+var totalCircles = 20000;
 var createCircleAttempts = 3000;
 
 color1 = "#5D737E"
