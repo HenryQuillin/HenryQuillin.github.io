@@ -1,4 +1,6 @@
-// https://generativeartistry.com/tutorials/circle-packing/
+
+
+
 
 var canvas = document.getElementById('c1');
 var context = canvas.getContext('2d');
@@ -12,10 +14,10 @@ context.scale(dpr, dpr);
 context.lineWidth = 2;
   
 var circles = [];
-var minRadius = .0001;
+var minRadius = .001;
 var maxRadius = 150;
-var totalCircles = 20000;
-var createCircleAttempts = 3000;
+var totalCircles = 15000;
+var createCircleAttempts = 7000;
 
 color1 = "#5D737E"
 color2 = "#64B6AC"
@@ -30,20 +32,49 @@ water={
   4:"#DAFFEF",
   5:"#FCFFFD"
 };
-light={ 
-  1: "#d73d6c",
-  2:"#d57276",
-  3:"#d6c2bc",
-  4:"#c0cccc",
-  5:"#65b2c6"
+warm={ 
+  1: "#FF5C58",
+  2:"#FE8F8F",
+  3:"#FCD2D1",
+  4:"#FFEDD3"
 };
+dark={ 
+  1: "#222831",
+  2:"#393E46",
+  3:"#00ADB5",
+  4:"#EEEEEE"
+};
+pallets={
+  1:"red",
+  2:"orange",
+  3:"yellow",
+  4:"green",
+  5:"blue",
+  6:"purple",
+  7:'#00FFFF',
+  8:'monochrome',
+  9:"random"
+}
+num1 = Math.floor(Math.random() * 9) + 1
+
+pallet = pallets[num1]
+ 
  
 function getColor() {
   // code = Math.floor(Math.random()*10000).toString(16);
   // return color = "#" + code; 
-  num = Math.floor(Math.random() * 5) + 1
 
-  return water[num]
+  num = Math.floor(Math.random() * 19) + 1
+  small_num = Math.floor(Math.random() * 4) + 1
+
+  var color = randomColor({hue: pallet, count: 20})[num];
+  if (num1 > 7){
+    color = water[small_num]
+  }
+
+  return color //dark[num]
+
+ // return water[small_num]
 
   
 }
@@ -77,7 +108,7 @@ function createAndDrawCircle() {
       break;
     } 
   }
-   context.fillStyle = getColor();
+  context.fillStyle = getColor();
   circles.push(newCircle);
   context.beginPath();
   context.arc(newCircle.x, newCircle.y, newCircle.radius, 0, 2*Math.PI);
