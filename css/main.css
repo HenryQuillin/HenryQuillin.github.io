@@ -4,6 +4,16 @@
   margin-left: 16px;
 }
 
+.mobile-warning {
+  position: relative;
+  display: none;
+  margin: unset;
+}
+@media only screen and (max-width: 600px) {
+  .mobile-warning {
+    display: block;
+  }
+}
 
 .timeline-card:before {
   content: '';
